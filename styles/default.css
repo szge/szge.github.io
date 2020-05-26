@@ -130,6 +130,19 @@ body {
      cursor:pointer;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.main h1 {
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+}
+
 .footer {
   padding: 1px; /* Some padding */
   text-align: center; /* Center text*/
