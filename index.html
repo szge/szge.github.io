@@ -12,6 +12,8 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
+        padding-left: 150px;
+        padding-right: 150px;
       }
 
       /* Style the header */
@@ -24,6 +26,28 @@
       /* Increase the font size of the h1 element */
       .header h1 {
         font-size: 40px;
+      }
+
+      .blinking-cursor {
+        color: #FFFFFF;
+        -webkit-animation: 1s blink step-end infinite;
+      }
+
+      @-webkit-keyframes "blink" {
+        from, to {
+          color: transparent;
+        }
+        50% {
+          color: white;
+        }
+      }
+
+      .header .grid-container {
+        margin-left: -80px;
+        margin-right: -80px;
+        font-size: 30px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
       }
 
       .header a {
@@ -90,10 +114,11 @@
         background-color: white; /* White background color */
         padding: 20px; /* Some padding */
         padding-bottom: 2000px; /* Make it a long boi */
+        opacity: 0.3;
       }
 
       .footer {
-        padding: 20px; /* Some padding */
+        padding: 1px; /* Some padding */
         text-align: center; /* Center text*/
         background: #ddd; /* Grey background */
       }
@@ -102,6 +127,10 @@
       @media screen and (max-width: 700px) {
         .row {
           flex-direction: column;
+        }
+
+        .header .grid-container {
+          display: none;
         }
       }
 
@@ -116,7 +145,16 @@
   </head>
   <body>
     <div class="header">
-      <h1>Jonathan Chiang</h1>
+      <h1>
+        <span style="color: #0066cc;">Jonathan</span> <span style="color: #009900;">Chiang</span><span class="blinking-cursor">|</span>
+      </h1>
+      <div class="grid-container">
+        <div class="item1">Mathematics</div>
+        <div class="item2">|</div>
+        <div class="item3">Computer Science</div>
+        <div class="item4">|</div>
+        <div class="item5">Music</div>
+      </div>
       <p>
         A website created by me.<br>
         <a href="https://github.com/Jonjonbo">GitHub</a>
@@ -127,9 +165,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
-      <a href="social.html">Social Media</a>
       <a href="resume.pdf" target="_blank">Resume</a>
-      <a href="#" class="right">Link</a>
     </div>
 
     <div class="row">
@@ -137,7 +173,7 @@
     </div>
 
     <div class="footer">
-      <h2>Footer</h2>
+      <h2>Copyright 2020 Jonathan Chiang</h2>
     </div>
   </body>
 </html>
