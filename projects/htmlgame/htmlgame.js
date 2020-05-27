@@ -1,4 +1,5 @@
 var div;
+var context;
 var fps = 144;
 var player;
 var mouseTracker;
@@ -14,6 +15,7 @@ var healthbar;
 var ammo = 200;
 var ammobar;
 var reloadDelayFrame = 0;
+var background;
 
 function startGame(id) {
   player = new playerComponent(30, 30, "blue", 10, 120);
@@ -26,6 +28,7 @@ function startGame(id) {
   soundReload = new sound("reload.mp3");
   healthbar = new healthbarComponent();
   ammobar = new ammobarComponent();
+  background = new backgroundComponent("background.jpg");
 }
 
 var myGameArea = {
@@ -35,6 +38,7 @@ var myGameArea = {
     this.canvas.width = screenWidth;
     this.canvas.height = screenHeight;
     this.context = this.canvas.getContext("2d");
+    context = this.context;
     this.canvas.style.cursor = "none";
     div = document.getElementById(id);
     div.appendChild(this.canvas);
@@ -72,19 +76,35 @@ function playerComponent(width, height, color, x, y) {
   this.x = x;
   this.y = y;
   this.update = function(){
-    context = myGameArea.context;
     context.fillStyle = color;
     context.fillRect(this.x, this.y, this.width, this.height);
   }
 }
 
+function backgroundComponent(src) {
+  /*this.image = new Image("background");
+  this.image.src = src;
+  div.appendChild(this.image);
+  this.x = 0;
+  this.y = 0;*/
+  this.update = function() {
+    //context.drawImage(this.image, this.x, this.y, this.x + screenWidth/2, this.y + screenHeight/2, 0, 0, screenWidth, screenHeight);
+  }
+}
+
 function mouseComponent() {
   this.update = function(){
-    context = myGameArea.context;
     context.beginPath();
     context.lineWidth = 1;
     context.arc(mousePos.x, mousePos.y, 3, 0, 2 * Math.PI);
     context.stroke();
+    if (frameCounter <= reloadDelayFrame + 144) {
+      context = myGameArea.context;
+      context.beginPath();
+      context.lineWidth = 1;
+      context.arc(mousePos.x, mousePos.y, 10, 0, 2 * Math.PI * ((frameCounter - reloadDelayFrame) / 144));
+      context.stroke();
+    }
   }
 }
 
@@ -95,7 +115,6 @@ function healthbarComponent() {
     this.startX = (player.x + player.width / 2) - this.width / 2;
     this.startY = (player.y) - this.height - 5;
 
-    context = myGameArea.context;
     context.fillStyle = "white";
     context.fillRect(this.startX, this.startY, this.width, this.height);
 
@@ -115,7 +134,6 @@ function ammobarComponent() {
     this.startX = healthbar.startX;
     this.startY = healthbar.startY - this.height;
 
-    context = myGameArea.context;
     context.fillStyle = "white";
     context.fillRect(this.startX, this.startY, this.width, this.height);
 
@@ -197,6 +215,7 @@ function updateGameArea() {
   frameCounter += 1;
   myGameArea.clear();
   // always update mouse movement first for responsiveness
+  background.update();
   mouseTracker.update();
   shootBasic();
   if (myGameArea.keys["W".charCodeAt(0)]) {if(player.y > 0) player.y -= 2;}
