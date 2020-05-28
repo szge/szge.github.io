@@ -42,7 +42,7 @@
   padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 250px);
-  grid-template-rows: 250px 250px;
+  grid-auto-rows: 250px;
   grid-gap: 1em;
   text-align: center;
 }
