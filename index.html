@@ -16,13 +16,14 @@
       integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
       crossorigin="anonymous"></script>
     <script type="text/javascript" src="fullpage.min.js"></script>
+    <script type="text/javascript" src="scrolloverflow.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
         $('#fullpage').fullpage({
           anchors: ['about', 'projects'],
           sectionsColor: ['#2e86de', '#ff9f43', 'whitesmoke'],
           navigation: true,
-          continuousVertical: true,
+          scrollOverflow: true,
           navigationPosition: 'right',
           navigationTooltips: ['About Me', 'Projects']
         });

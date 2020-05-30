@@ -45,6 +45,7 @@
   grid-auto-rows: 250px;
   grid-gap: 1em;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 img {
@@ -95,6 +96,13 @@ img {
 
 .project-listing:hover .project-image img {
   filter: blur(2px);
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 1058px) {
+  .title {
+    line-height: 1.8em;
+  }
 }
 
 #links {
