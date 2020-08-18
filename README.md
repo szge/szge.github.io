@@ -1,4 +1,4 @@
-# ClumpyJonathan.github.io/
+# szge.github.io/
 
 My very own website! I'm Jonathan Chiang, and this website has basically all of my relevant info: resume, projects, the works.
 
